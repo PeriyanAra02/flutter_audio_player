@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:player/widgets/play_button.dart';
 
 class PlayerScreen extends StatelessWidget {
-  const PlayerScreen({Key? key}) : super(key: key);
+  const PlayerScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +34,7 @@ class PlayerScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
-            PlayButton(
-              onTap: () {},
-            ),
+            const PlayButton(),
           ],
         ),
       ),
