@@ -4,20 +4,7 @@ import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
 
 class MyAudioHandler extends BaseAudioHandler {
-  AudioPlayer player = AudioPlayer(
-      // audioLoadConfiguration: AudioLoadConfiguration(
-      //   darwinLoadControl: DarwinLoadControl(
-      //     preferredForwardBufferDuration: const Duration(minutes: 1),
-      //     preferredPeakBitRate: 50000,
-      //   ),
-      //   androidLoadControl: AndroidLoadControl(
-      //     maxBufferDuration: const Duration(minutes: 2),
-      //     minBufferDuration: const Duration(minutes: 2),
-      //     bufferForPlaybackDuration: const Duration(minutes: 1),
-      //     targetBufferBytes: 50000,
-      //   ),
-      // ),
-      );
+  AudioPlayer player = AudioPlayer();
 
   MyAudioHandler() {
     _init();
@@ -66,10 +53,6 @@ class MyAudioHandler extends BaseAudioHandler {
           MediaAction.seekBackward,
           MediaAction.seekForward,
         },
-
-        // systemActions: const {
-        //   MediaAction.seek,
-        // },
         androidCompactActionIndices: const [0, 1, 3],
         processingState: const {
           ProcessingState.idle: AudioProcessingState.idle,
