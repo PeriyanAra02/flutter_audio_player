@@ -17,12 +17,8 @@ class _PlayButtonState extends State<PlayButton> {
 
   @override
   void initState() {
-    init();
+    audioHandler = MyAudioHandler();
     super.initState();
-  }
-
-  Future<void> init() async {
-    audioHandler = await initAudioService();
   }
 
   @override

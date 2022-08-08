@@ -3,38 +3,21 @@ import 'dart:developer';
 import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
 
-Future<MyAudioHandler> initAudioService() async {
-  log('init AudioService');
-  return await AudioService.init(
-    builder: () => MyAudioHandler(),
-    config: const AudioServiceConfig(
-      androidNotificationChannelId: 'com.player.audio',
-      androidNotificationChannelName: 'Audio Service Demo',
-      androidNotificationOngoing: true,
-      androidStopForegroundOnPause: true,
-      androidShowNotificationBadge: true,
-      androidResumeOnClick: true,
-      fastForwardInterval: Duration(seconds: 15),
-      rewindInterval: Duration(seconds: 15),
-    ),
-  );
-}
-
 class MyAudioHandler extends BaseAudioHandler {
   AudioPlayer player = AudioPlayer(
-    // audioLoadConfiguration: AudioLoadConfiguration(
-    //   darwinLoadControl: DarwinLoadControl(
-    //     preferredForwardBufferDuration: const Duration(minutes: 1),
-    //     preferredPeakBitRate: 50000,
-    //   ),
-    //   androidLoadControl: AndroidLoadControl(
-    //     maxBufferDuration: const Duration(minutes: 2),
-    //     minBufferDuration: const Duration(minutes: 2),
-    //     bufferForPlaybackDuration: const Duration(minutes: 1),
-    //     targetBufferBytes: 50000,
-    //   ),
-    // ),
-  );
+      // audioLoadConfiguration: AudioLoadConfiguration(
+      //   darwinLoadControl: DarwinLoadControl(
+      //     preferredForwardBufferDuration: const Duration(minutes: 1),
+      //     preferredPeakBitRate: 50000,
+      //   ),
+      //   androidLoadControl: AndroidLoadControl(
+      //     maxBufferDuration: const Duration(minutes: 2),
+      //     minBufferDuration: const Duration(minutes: 2),
+      //     bufferForPlaybackDuration: const Duration(minutes: 1),
+      //     targetBufferBytes: 50000,
+      //   ),
+      // ),
+      );
 
   MyAudioHandler() {
     _init();
@@ -114,6 +97,7 @@ class MyAudioHandler extends BaseAudioHandler {
         artUri: Uri.parse(
             'https://images.unsplash.com/photo-1614850715649-1d0106293bd1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y292ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'),
         extras: {},
+        rating: const Rating.newHeartRating(true),
       ),
     );
     await player.setAudioSource(audioSource);
