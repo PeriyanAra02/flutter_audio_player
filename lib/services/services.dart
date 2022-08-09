@@ -25,12 +25,17 @@ class MyAudioHandler extends BaseAudioHandler {
 
   @override
   Future<void> seekBackward(bool begin) async {
-    player.seek(Duration(seconds: player.position.inSeconds - 15));
+    if (player.position.inSeconds >= 15) {
+      seek(Duration(seconds: player.position.inSeconds - 15));
+    }
   }
 
   @override
   Future<void> seekForward(bool begin) async {
-    player.seek(Duration(seconds: player.position.inSeconds + 15));
+    if (player.duration != null &&
+        player.position.inSeconds <= player.duration!.inSeconds) {
+      seek(Duration(seconds: player.position.inSeconds + 15));
+    }
   }
 
   Future<void> _init() async {
@@ -85,4 +90,9 @@ class MyAudioHandler extends BaseAudioHandler {
     );
     await player.setAudioSource(audioSource);
   }
+}
+
+enum SeekDirection {
+  forward,
+  backward,
 }
